@@ -45,6 +45,6 @@
   <!-- set game metadata -->
   <PropertyGroup>
     <GameExecutableName>Stardew Valley</GameExecutableName>
-    <GameExecutableName Condition="$(OS) != 'Windows_NT'">StardewValley</GameExecutableName>
+    <GameExecutableName Condition="$(OS) != 'Windows_NT' OR $(DefineConstants.Contains(SMAPI_FOR_WINDOWS_64BIT_HACK))">StardewValley</GameExecutableName>
   </PropertyGroup>
 </Project>
