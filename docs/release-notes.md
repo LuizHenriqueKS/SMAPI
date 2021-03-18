@@ -9,11 +9,14 @@
 
 ## Upcoming release
 * For players:
-  * Added `regenerate_bundles` console command to reset community center bundles if they're corrupted by a bug _(in Console Commands)_.
-  * Disabled aggressive memory optimization (added in 3.9.2) by default. The option reduces errors for a subset of players who use certain mods, but may cause crashes for farmhands in multiplayer. You can edit `smapi-internal/config.json` to enable it if you experience frequent `OutOfMemoryException` errors.
+  * Added `regenerate_bundles` console command to reset community center bundles _(in Console Commands)_.
+  * Disabled aggressive memory optimization by default.  
+    _This was added in SMAPI 3.9.2 to reduce errors for a subset of players who use certain mods, but it can cause errors for farmhands in multiplayer. You can edit `smapi-internal/config.json` to enable it if you experience frequent `OutOfMemoryException` errors._
 
 * For mod authors:
   * Added asset propagation for interior door sprites.
+  * Added a `Constants.GameFramework` field which indicates whether the game is using XNA Framework or MonoGame.  
+    _Note: mods don't need to handle the difference in most cases, but some players may use MonoGame on Windows in upcoming versions. Mods which use the `Constants.TargetPlatform` should review usages to determine whether they're actually checking the platform or the game framework._
   * Reduced performance impact of invalidating cached assets before a save is loaded.
   * Fixed assets changed by a mod not reapplied if playing in non-English, the changes are only applicable after the save is loaded, the player returns to title and reloads a save, and the game reloads the target asset before the save is loaded.
 
