@@ -549,6 +549,8 @@ namespace StardewModdingAPI.Framework
         /// <param name="runUpdate">Invoke the game's update logic.</param>
         private void OnPlayerInstanceUpdating(SGame instance, GameTime gameTime, Action runUpdate)
         {
+            PerformanceAppraiser.Monitor = this.Monitor;
+            PerformanceAppraiser.Start("SCore.OnPlayerInstanceUpdating");
             var events = this.EventManager;
 
             try
@@ -1023,6 +1025,9 @@ namespace StardewModdingAPI.Framework
                 // exit if irrecoverable
                 if (!this.UpdateCrashTimer.Decrement())
                     this.ExitGameImmediately("The game crashed when updating, and SMAPI was unable to recover the game.");
+            } finally
+            {
+                PerformanceAppraiser.Finish("SCore.OnPlayerInstanceUpdating");
             }
         }
 

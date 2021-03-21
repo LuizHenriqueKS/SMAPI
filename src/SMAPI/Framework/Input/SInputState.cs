@@ -9,7 +9,7 @@ using StardewValley;
 namespace StardewModdingAPI.Framework.Input
 {
     /// <summary>Manages the game's input state.</summary>
-    internal sealed class SInputState : InputState
+    public class SInputState : InputState
     {
         /*********
         ** Accessors

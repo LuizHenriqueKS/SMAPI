@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI.Framework.Events;
 using StardewModdingAPI.Framework.Input;
 using StardewModdingAPI.Framework.Reflection;
+using StardewModdingAPI.Utilities;
 using StardewValley;
 
 namespace StardewModdingAPI.Framework
@@ -150,7 +151,11 @@ namespace StardewModdingAPI.Framework
         /// <param name="gameTime">A snapshot of the game timing state.</param>
         protected override void Update(GameTime gameTime)
         {
-            this.OnGameUpdating(gameTime, () => base.Update(gameTime));
+            this.OnGameUpdating(gameTime, () => {
+                PerformanceAppraiser.Start("GameRunner.Update");
+                base.Update(gameTime);
+                PerformanceAppraiser.Finish("GameRunner.Update");
+            });
         }
 
         /// <summary>Update metadata when a split screen is added or removed.</summary>

@@ -4,7 +4,7 @@ using StardewValley.Menus;
 namespace StardewModdingAPI.Framework
 {
     /// <summary>SMAPI's implementation of the chatbox which intercepts errors for logging.</summary>
-    internal class SChatBox : ChatBox
+    public class SChatBox : ChatBox
     {
         /*********
         ** Fields
